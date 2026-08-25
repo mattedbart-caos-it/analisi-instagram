@@ -1,0 +1,393 @@
+/* Stili Generali e Colori */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+
+    /* 1. Colore grigio scuro più morbido di base + Sfumatura radiale */
+    background: radial-gradient(circle at center, #242223 0%, #121111 100%);
+
+    /* 2. Sovrapposizione del pattern a micro-punti geometrici */
+    background-image: 
+        radial-gradient(circle at center, #242223 0%, #121111 100%), 
+        radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 100% 100%, 20px 20px;
+    background-attachment: fixed;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+/* --- 🗂️ STILE INTERFACCIA TABS --- */
+
+/* Contenitore dei pulsanti: Centrato e senza linea */
+.tabs-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 15px;               
+    margin-top: 10px;        
+    margin-bottom: 30px;     
+    padding-bottom: 0;       
+    border-bottom: none;
+}
+
+/* Stile base dei pulsanti dei tab */
+.tab-btn {
+    background: #1a1a1f;
+    border: 1px solid #2d2d35;
+    color: #888899;
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Effetto quando passi sopra col mouse */
+.tab-btn:hover {
+    color: #f5f5f5;
+    border-color: #4a90e2;
+}
+
+/* Pulsante ATTIVO (Quello selezionato) */
+.tab-btn.active {
+    background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+    color: #ffffff;
+    border-color: #4a90e2;
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+}
+
+/* Gestione della visibilità dei contenuti */
+.tab-content {
+    display: none; /* Di base nasconde tutto */
+}
+
+.tab-content.active {
+    display: block; /* Mostra solo il tab che ha la classe active */
+}
+
+/* Placeholder provvisorio per la sezione storie */
+.stories-placeholder {
+    background-color: #1a1a1f;
+    border: 1px solid #2d2d35;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    color: #888899;
+}
+.stories-placeholder h3 {
+    color: #4a90e2;
+    margin-top: 0;
+}
+
+/* 🏷️ BADGE ROSSO ESCLUSIVO PER LE STORIE */
+.badge-tipo.badge-storia {
+    background-color: #ff4a4a;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(255, 74, 74, 0.4);
+}
+
+/* 📝 NOTA PERSONALIZZATA PER LE STORIE (Barretta rossa coordinata) */
+.post-note.note-storia {
+    border-left: 4px solid #ff4a4a;
+}
+.post-note.note-storia strong {
+    color: #ff4a4a;
+}
+
+/* Contenitore dei Post */
+.posts-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Scheda del Singolo Post */
+.post-card {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+/* Intestazione del Post (Info principali) */
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.post-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #e0e0e0;
+}
+
+.post-meta {
+    font-size: 0.9rem;
+    color: #a0a0a0;
+}
+
+/* Badge Viola per il Tipo di Post */
+.badge-tipo {
+    background-color: #8a3ab9;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 12px;
+    margin-right: 5px;
+}
+
+/* Nuovo Badge Verde per la Categoria di Contenuto */
+.badge-categoria {
+    background-color: #00a86b;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+/* Chips dei Temi sotto il titolo */
+.chips-themes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+}
+
+.chips-themes span {
+    background-color: #2c2c2c;
+    color: #b0b0b0;
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid #444;
+}
+
+/* Stile speciale per la Chip Principale */
+.chips-themes .chip-principale {
+    background-color: #2a2415; 
+    color: #ffd700;            
+    border: 1px solid #ffd700;
+    font-weight: bold;
+}
+
+.post-note {
+    background-color: #222229;     
+    border-left: 4px solid #4a90e2; 
+    padding: 12px 15px;
+    margin-top: 14px;            
+    border-radius: 0 6px 6px 0;    
+    color: #e0e0e0;            
+    font-size: 0.9rem;
+    line-height: 1.4;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2); /* Leggero effetto incavato */
+}
+
+/* Stile per la parolina "Nota del post:" in grassetto */
+.post-note strong {
+    color: #4a90e2; /* Mette in risalto il titolo della nota con lo stesso azzurro del bordo */
+    font-weight: 600;
+}
+
+//* --- STRUTTURA ACCORDION PER I LIKE --- */
+.likes-section {
+    background-color: #161616;
+    border-radius: 8px;
+    padding: 12px 15px;
+    margin-top: 15px;
+}
+
+.likes-toggle {
+    width: 100%;
+    background: none;
+    border: none;
+    color: #FFFFFF;
+    font-size: 0.95rem;
+    font-weight: bold;
+    font-family: inherit;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    cursor: pointer;
+}
+
+.likes-toggle .arrow {
+    font-size: 0.8rem;
+    color: #a0a0a0;
+    transition: transform 0.2s ease;
+}
+
+.likes-toggle.active .arrow {
+    transform: rotate(180deg);
+}
+
+.likes-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease-out, padding 0.25s ease-out;
+}
+
+/* --- GRAFICA DELLE STATISTICHE DI GENERE --- */
+.gender-stats {
+    margin-bottom: 15px;
+    background-color: #222;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #333;
+}
+
+/* La barra contenitore */
+.gender-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #444;
+    margin-bottom: 8px;
+}
+
+/* Segmento Uomini (Azzurro) */
+.bar-men {
+    background-color: #0095f6;
+    width: 0%; /* Gestito dal JavaScript */
+    transition: width 0.5s ease;
+}
+
+/* Segmento Donne (Rosa) */
+.bar-women {
+    background-color: #fd5a93;
+    width: 0%; /* Gestito dal JavaScript */
+    transition: width 0.5s ease;
+}
+
+/* Scritte sotto la barra */
+.gender-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.label-men { color: #0095f6; }
+.label-women { color: #fd5a93; }
+
+/* --- LISTA DEI NOMI --- */
+.likes-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.likes-list li {
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: #dcdcdc;
+    transition: background-color 0.2s;
+}
+
+.likes-list li:hover {
+    background-color: #3a3a3a;
+    cursor: pointer;
+}
+
+/* Stile per i contatori dei fantasmi (italic light) */
+.ghost-counter {
+    font-style: italic;
+    font-weight: 300;
+    opacity: 0.8;
+}
+
+/* 🔥 TOP FAN: Bordino dorato e sfondo leggermente più luminoso */
+.likes-list li.top-fan {
+    border: 1px solid #ffd700;
+    background-color: #2c2512;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* ⭐ REGULAR: Bordino azzurro/argenteo discreto */
+.likes-list li.regular-fan {
+    border: 1px solid #4a90e2;
+    background-color: #151f2b;
+}
+
+/* 💤 OCCASIONALE: Stile standard o leggermente più spento */
+.likes-list li.occasional-fan {
+    border: 1px solid #444444;
+    background-color: #161616;
+    opacity: 0.7;
+}
+
+/* --- NUOVI STILI PER FANTASMI STRATIFICATI --- */
+
+/* Base comune per tutti i fantasmi (rimane sbiadita e tratteggiata) */
+.likes-list li.ghost-like {
+    background-color: #1a1415;
+    opacity: 0.4;
+    color: #aaa;
+}
+
+/* Se il fantasma era un TOP FAN: Bordo tratteggiato giallo oro */
+.likes-list li.ghost-like.ghost-top {
+    border: 1px dashed #ffd700;
+}
+
+/* Se il fantasma era un REGULAR: Bordo tratteggiato azzurro */
+.likes-list li.ghost-like.ghost-regular {
+    border: 1px dashed #4a90e2;
+}
+
+/* Se il fantasma era un OCCASIONALE: Bordo tratteggiato grigio scuro */
+.likes-list li.ghost-like.ghost-occasional {
+    border: 1px dashed #444444;
+}
+
+/* --- LABEL DIVISORIA PER I LIKES FANTASMA --- */
+.ghost-divider {
+    width: 100%;
+    display: block;
+    margin-top: 25px;       /* Crea lo stacco generoso dai mi piace reali */
+    margin-bottom: 15px;    /* Distanza dai nomi dei fantasmi sotto */
+    padding: 8px 12px;
+    color: #ff9999;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+}
+
+
