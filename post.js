@@ -105,17 +105,30 @@ sections.forEach((section) => {
     }
 });
 
-// Accordion
+// Gestione dell'apertura/chiusura accordion - OTTIMIZZATO MOBILE
 document.querySelectorAll('.likes-toggle').forEach(button => {
-    button.addEventListener('click', () => {
+    // Usiamo sia click che touchend per essere sicuri che prenda il tocco istantaneamente su smartphone
+    const handleToggle = (e) => {
+        e.preventDefault(); // Evita che il telefono attivi due volte il click
         const accordionContent = button.nextElementSibling;
         button.classList.toggle('active');
+        
         if (button.classList.contains('active')) {
-            accordionContent.style.maxHeight = "none";
+            accordionContent.style.maxHeight = "none"; 
+            accordionContent.style.display = "block"; // Forza la visibilità su mobile
             accordionContent.style.paddingTop = "15px";
         } else {
-            accordionContent.style.maxHeight = 0;
+            accordionContent.style.maxHeight = "0";
             accordionContent.style.paddingTop = "0px";
+            // Aspetta la fine dell'animazione per nasconderlo del tutto se serve
+            setTimeout(() => {
+                if (!button.classList.contains('active')) {
+                    accordionContent.style.display = "none";
+                }
+            }, 300);
         }
-    });
+    };
+
+    button.addEventListener('click', handleToggle);
 });
+
