@@ -298,6 +298,21 @@ h1 {
 .label-men { color: #0095f6; }
 .label-women { color: #fd5a93; }
 
+.badge-text {
+    color: #ffffff !important;
+    font-size: 0.9rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Gestione delle emoji per evitare che si rompano o creino icone strane su mobile */
+.badge-emoji {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+}
+
 /* --- LISTA DEI NOMI --- */
 .likes-list {
     list-style: none;

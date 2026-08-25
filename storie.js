@@ -35,20 +35,24 @@ sections.forEach((section) => {
         if (gender === 'M') uomini++;
         if (gender === 'F') donne++;
         
-        currentLikesNames.push(name);
+        currentLikesNames.push(cleanName);
 
-        const personalTotal = userStoriesCount[name] || 0;
-        const fedeltaPercentuale = (personalTotal / totalStories) * 100;
+        const personalTotalLikes = userLikesCount[cleanName] || 0;
+        const fedeltaPercentuale = (personalTotalLikes / totalPosts) * 100;
 
+        // Resettiamo le classi
+        item.className = ''; 
+        
+        // Costruiamo la struttura sicura: l'emoji ha uno span dedicato, il nome rimane testo pulito
         if (fedeltaPercentuale >= 75) {
-            item.className = 'top-fan';
-            item.innerHTML = `🔥 ${name}`;
+            item.classList.add('top-fan');
+            item.innerHTML = `<span class="badge-emoji">🔥</span> <span class="badge-text">${cleanName}</span>`;
         } else if (fedeltaPercentuale >= 40) {
-            item.className = 'regular-fan';
-            item.innerHTML = `⭐ ${name}`;
+            item.classList.add('regular-fan');
+            item.innerHTML = `<span class="badge-emoji">⭐</span> <span class="badge-text">${cleanName}</span>`;
         } else {
-            item.className = 'occasional-fan';
-            item.innerHTML = `🌬️ ${name}`;
+            item.classList.add('occasional-fan');
+            item.innerHTML = `<span class="badge-emoji">🌬️</span> <span class="badge-text">${cleanName}</span>`;
         }
     });
 
@@ -74,11 +78,12 @@ sections.forEach((section) => {
             
             if (fan.percentuale >= 75) {
                 ghostLi.classList.add('ghost-top');
-                ghostLi.innerHTML = `🔥 ${fan.name}`;
+                ghostLi.innerHTML = `<span class="badge-emoji">🔥</span> <span class="badge-text">${fan.name}</span>`;
             } else {
                 ghostLi.classList.add('ghost-regular');
-                ghostLi.innerHTML = `⭐ ${fan.name}`;
+                ghostLi.innerHTML = `<span class="badge-emoji">⭐</span> <span class="badge-text">${fan.name}</span>`;
             }
+
             listContainer.appendChild(ghostLi);
         }
     });
