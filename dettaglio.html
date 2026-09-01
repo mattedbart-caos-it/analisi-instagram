@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dettaglio Post - Analytics</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="detail-body">
+
+    <div class="detail-card">
+        <div class="detail-header">
+            <h3>Dettaglio Post Analytics</h3>
+            <a href="index.html" class="back-btn">&times;</a>
+        </div>
+        <div class="detail-content">
+            <div class="image-container">
+                <div id="formatBadge" class="format-badge">📁</div>
+                <img id="detailImg" src="" alt="Anteprima Post" class="detail-preview-img">
+            </div>
+            
+            <div class="detail-stat-box">
+                <p class="detail-stat-title">Performance Post</p>
+                <div class="detail-stat-value">
+                    <img src="Immagini/heart-svgrepo-com.svg" alt="Cuore" class="detail-heart">
+                    <span id="detailLikes">0</span>
+                    <span id="detailTrend">📈</span>
+                </div>
+            </div>
+
+            <div class="new-context-card">
+                <div class="context-row">
+                    <span class="context-label">📅 Data di pubblicazione</span>
+                    <span id="ctxDate" class="context-data">-</span>
+                </div>
+                <div class="context-row">
+                    <span class="context-label">📸 Contenuto visualizzato</span>
+                    <span id="ctxContent" class="context-data">-</span>
+                </div>
+            </div>
+
+            <!-- Box dei Mi Piace Ricevuti -->
+            <div class="likers-box">
+                <p class="likers-title">❤️ Persone a cui piace</p>
+                <div id="likersTags" class="likers-tags"></div>
+            </div>
+
+            <!-- NUOVO: Box dei Like Fantasma (Ghost Likers) -->
+            <div class="ghost-box">
+                <p class="ghost-title">👻 Like Fantasma (Super-Fan Assenti)</p>
+                <div id="ghostTags" class="ghost-tags">
+                    <!-- I nomi di chi non ha messo like verranno inseriti qui -->
+                </div>
+            </div>
+
+            <!-- Box Commento AI -->
+            <div class="ai-box">
+                <p class="ai-title">🤖 Assistente AI Analytics</p>
+                <p id="aiComment" class="ai-text">Analisi in corso...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
