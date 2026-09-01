@@ -237,26 +237,6 @@ footer {
     margin-left: auto; /* Spinge l'emoji dell'andamento a destra */
 }
 
-/* --- RESPONSIVE MOBILE --- */
-@media (max-width: 768px) {
-    .brand-text {
-        display: none;
-    }
-
-    main {
-        margin: 0; 
-        padding: 0;
-        max-width: 100%;
-    }
-
-    .insta-grid {
-        gap: 2px;
-    }
-
-    .detail-card {
-        max-width: 100%;
-    }
-}
 /* --- STILE PER IL BOX COMMENTO AI --- */
 .ai-box {
     background-color: #f0f7ff; /* Sfondo azzurro chiaro tech */
@@ -469,18 +449,45 @@ footer {
     white-space: nowrap;
 }
 
-/* Mobile responsive */
-@media (max-width: 480px) {
-    .fasce-container {
-        flex-direction: column; /* Incolonna le fasce per salvaguardare lo spazio sui telefoni piccoli */
-        gap: 2px;
-        width: 85%;
+@media (max-width: 768px) {
+    header {
+        padding: 12px 15px;
+    }
+
+    .brand-text {
+        display: none; /* Nasconde ANALYTICS per pulizia su schermi piccoli */
+    }
+
+    main {
+        margin: 0; 
+        padding: 0;
+        max-width: 100%;
+    }
+
+    /* TRASFORMAZIONE DELLA GRIGLIA: 1 SOTTO L'ALTRA */
+    .insta-grid {
+        grid-template-columns: repeat(1, 1fr); /* Forza 1 sola colonna gigante */
+        gap: 12px; /* Spazio elegante tra un post e l'altro nel feed */
+        background-color: #fafafa; /* Sfondo grigio chiaro tra i post stile IG */
+    }
+
+    .grid-item {
+        border-radius: 0; /* Rimuove arrotondamenti per toccare i bordi dello schermo */
+        border-top: 1px solid #efefef;
+        border-bottom: 1px solid #efefef;
+        background-color: #ffffff;
+    }
+
+    /* Rende le scritte dell'hover leggibili e sempre attive al tocco su mobile */
+    .likes {
+        font-size: 1.1rem;
     }
     .badge {
-        font-size: 0.6rem;
-        padding: 2px;
+        font-size: 0.65rem;
+        padding: 4px;
     }
     .trend-badge {
-        font-size: 0.7rem;
+        font-size: 0.75rem;
     }
 }
+
