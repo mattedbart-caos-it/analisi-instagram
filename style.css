@@ -455,46 +455,70 @@ footer {
     }
 
     .brand-text {
-        display: none; /* Nasconde la scritta ANALYTICS su mobile */
+        display: none;
     }
 
     main {
-        margin: 20px 0; /* Aggiunge spazio verticale sopra e sotto tutto il blocco post */
-        padding: 0 15px; /* SPAZIO A DESTRA E SINISTRA DEL FEED MOBILE */
+        margin: 20px 0; 
+        padding: 0 15px;
         max-width: 100%;
     }
 
-    /* Gestione dello scorrimento verticale pulito */
     .insta-grid {
         display: flex;
         flex-direction: column;
-        gap: 20px; /* SPAZIO VERTICALE TRA UNA FOTO E L'ALTRA */
+        gap: 20px; /* Spazio tra i post del feed mobile */
         background-color: #ffffff;
     }
 
     .grid-item {
         width: 100%;
-        aspect-ratio: 1 / 1; /* Mantiene le immagini quadrate e grandi */
+        aspect-ratio: 1 / 1;
         position: relative;
         cursor: pointer;
     }
 
-    /* Forza l'immagine interna a seguire i margini senza sbordare */
     .grid-item .main-img {
-        border-radius: 8px; /* Opzionale: arrotonda leggermente gli angoli delle foto per un look più moderno */
+        border-radius: 8px; /* Arrotonda gli angoli delle foto grandi */
     }
 
-    /* DISATTIVA L'OVERLAY NERO E I DATI SU MOBILE */
+    /* DI BASE L'OVERLAY COMPARE COPERTO ANCHE SU MOBILE */
     .grid-overlay {
-        display: none !important; 
-        opacity: 0 !important;
-    }
-    
-    .grid-item:hover .grid-overlay {
-        display: none !important;
+        opacity: 0;
+        pointer-events: none; /* Evita che l'overlay blocchi il tocco */
+        border-radius: 8px;
     }
 
-    /* Stili per la pagina di dettaglio sul telefono */
+    /* IL TRUCCO: Quando la foto è toccata (.active), l'overlay appare! */
+    .grid-item.active .grid-overlay {
+        opacity: 1;
+        pointer-events: auto;
+        background-color: rgba(0, 0, 0, 0.6); /* Sfondo scuro per leggere bene */
+    }
+
+    /* Disattiva l'hover classico su mobile per evitare conflitti */
+    .grid-item:hover .grid-overlay {
+        opacity: 0;
+    }
+    .grid-item.active:hover .grid-overlay {
+        opacity: 1;
+    }
+
+    .fasce-container {
+        flex-direction: row; /* Mantiene i 3 badge affiancati anche sul telefono */
+        gap: 4px;
+        width: 90%;
+    }
+
+    .badge {
+        font-size: 0.7rem;
+        padding: 4px 2px;
+    }
+
+    .trend-badge {
+        font-size: 0.8rem;
+    }
+
     .detail-card {
         max-width: 100%; 
     }
