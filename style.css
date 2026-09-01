@@ -455,39 +455,47 @@ footer {
     }
 
     .brand-text {
-        display: none; /* Nasconde ANALYTICS per pulizia su schermi piccoli */
+        display: none; /* Nasconde la scritta ANALYTICS su mobile */
     }
 
     main {
-        margin: 0; 
-        padding: 0;
+        margin: 20px 0; /* Aggiunge spazio verticale sopra e sotto tutto il blocco post */
+        padding: 0 15px; /* SPAZIO A DESTRA E SINISTRA DEL FEED MOBILE */
         max-width: 100%;
     }
 
-    /* TRASFORMAZIONE DELLA GRIGLIA: 1 SOTTO L'ALTRA */
+    /* Gestione dello scorrimento verticale pulito */
     .insta-grid {
-        grid-template-columns: repeat(1, 1fr); /* Forza 1 sola colonna gigante */
-        gap: 12px; /* Spazio elegante tra un post e l'altro nel feed */
-        background-color: #fafafa; /* Sfondo grigio chiaro tra i post stile IG */
-    }
-
-    .grid-item {
-        border-radius: 0; /* Rimuove arrotondamenti per toccare i bordi dello schermo */
-        border-top: 1px solid #efefef;
-        border-bottom: 1px solid #efefef;
+        display: flex;
+        flex-direction: column;
+        gap: 20px; /* SPAZIO VERTICALE TRA UNA FOTO E L'ALTRA */
         background-color: #ffffff;
     }
 
-    /* Rende le scritte dell'hover leggibili e sempre attive al tocco su mobile */
-    .likes {
-        font-size: 1.1rem;
+    .grid-item {
+        width: 100%;
+        aspect-ratio: 1 / 1; /* Mantiene le immagini quadrate e grandi */
+        position: relative;
+        cursor: pointer;
     }
-    .badge {
-        font-size: 0.65rem;
-        padding: 4px;
+
+    /* Forza l'immagine interna a seguire i margini senza sbordare */
+    .grid-item .main-img {
+        border-radius: 8px; /* Opzionale: arrotonda leggermente gli angoli delle foto per un look più moderno */
     }
-    .trend-badge {
-        font-size: 0.75rem;
+
+    /* DISATTIVA L'OVERLAY NERO E I DATI SU MOBILE */
+    .grid-overlay {
+        display: none !important; 
+        opacity: 0 !important;
+    }
+    
+    .grid-item:hover .grid-overlay {
+        display: none !important;
+    }
+
+    /* Stili per la pagina di dettaglio sul telefono */
+    .detail-card {
+        max-width: 100%; 
     }
 }
-
