@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instagram Analytics Dashboard</title>
-    <!-- Aggiornato con ?v=3 per evitare problemi di cache su iPhone -->
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="style.css?v=5">
+    <script src="chart.js" defer></script>
 </head>
 <body>
 
@@ -21,6 +21,15 @@
             </div>
         </div>
     </header>
+
+    <!-- CONTENITORE DEL GRAFICO (SOPRA LE IMMAGINI) -->
+    <div class="chart-section-container">
+        <p class="chart-section-title">📈 Andamento Temporale dei Like</p>
+        <div class="chart-wrapper">
+            <!-- Il tag canvas serve a JavaScript per disegnare -->
+            <canvas id="likesTimelineChart"></canvas>
+        </div>
+    </div>
 
     <main>
         <div class="insta-grid">
@@ -114,48 +123,83 @@
         <p>&copy; 2026 - Griglia Fotografica</p>
     </footer>
 
-        <!-- LOGICA TOUCH MOBILE (1° tocco mostra info, 2° tocco apre il dettaglio) -->
     <script>
-        // Seleziona tutte le foto che hanno la classe 'dynamic-link'
+        // 1. GESTIONE TOCCATE DOPPIO CLIC PER SMARTPHONE
         const links = document.querySelectorAll('.dynamic-link');
-        
         links.forEach(link => {
             link.addEventListener('click', function(e) {
-                // Controlla se l'utente sta navigando da uno smartphone (schermo <= 768px)
                 if (window.innerWidth <= 768) {
-                    
-                    // Se la foto NON ha ancora la classe 'active' (è il primo tocco)
                     if (!this.classList.contains('active')) {
-                        // Blocca il passaggio immediato all'altra pagina
                         e.preventDefault();
-                        
-                        // Rimuove la classe 'active' da tutte le altre foto per chiuderle
                         links.forEach(l => l.classList.remove('active'));
-                        
-                        // Attiva l'overlay scuro con i dati solo su questa foto
                         this.classList.add('active');
                     } else {
-                        // Se la foto aveva già la classe 'active' (è il secondo tocco)
-                        // Recupera l'indirizzo memorizzato nel tag 'data-url' e cambia pagina
                         const destination = this.getAttribute('data-url');
                         window.location.href = destination;
                     }
-                    
                 } else {
-                    // Se l'utente è su Computer, il click cambia pagina istantaneamente
                     const destination = this.getAttribute('data-url');
                     window.location.href = destination;
                 }
             });
         });
-
-        // OPZIONALE: Chiude l'overlay se si clicca in un punto vuoto fuori dalle foto
         document.addEventListener('click', function(e) {
             if (!e.target.closest('.dynamic-link')) {
                 links.forEach(l => l.classList.remove('active'));
             }
         });
+
+        // 2. INIZIALIZZAZIONE SICURA DEL GRAFICO CON I DATI REALI SULLA RIGA 168
+        window.addEventListener('load', function() {
+            if (typeof Chart !== 'undefined') {
+                const canvas = document.getElementById('likesTimelineChart');
+                if (canvas) {
+                    const ctx = canvas.getContext('2d');
+                    new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: ['13 Lug 2025', '31 Mag 2026', '29 Giu 2026', '04 Lug 2026', '02 Ago 2026', '29 Ago 2026'],
+                            datasets: [{
+                                label: 'Mi Piace Ricevuti',
+                                data: [57, 22, 45, 41, 36, 21],
+                                borderColor: '#0095f6',
+                                backgroundColor: 'rgba(0, 149, 246, 0.08)',
+                                borderWidth: 3,
+                                tension: 0.35,
+                                pointBackgroundColor: '#ffffff',
+                                pointBorderColor: '#0095f6',
+                                pointBorderWidth: 2,
+                                pointRadius: 5,
+                                pointHoverRadius: 7
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: { display: false }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    grid: { color: '#f0f0f0' },
+                                    ticks: { font: { size: 11, family: '-apple-system' } }
+                                },
+                                x: {
+                                    grid: { display: false },
+                                    ticks: { font: { size: 10, family: '-apple-system' } }
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+        });
     </script>
+</body>
+</html>
+
+
 
     </body>
 </html>
